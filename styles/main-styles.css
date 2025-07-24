@@ -1,0 +1,141 @@
+@import url(general-styles.css);
+
+main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%; 
+    margin-bottom: 1rem;
+    padding: 1.5rem;
+}
+
+main form {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%; 
+}
+
+main form .data {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.9rem;
+    padding: 1rem;
+    border: 1px solid var(--priColor);
+    width: 85%;
+    margin-bottom: 2rem;
+}
+
+main form .submitButton {
+    color: var(--secColor);
+    font-weight: var(--boldText);
+    font-size: var(--largeText);
+    background-color:  var(--priColor);
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    margin-top: 2rem;
+}
+
+main h3 {
+    color: var(--priColor);
+}
+
+.input {
+    outline: none;
+    border: none;
+    padding: 0.5rem;
+    font-size: var(--largeText);
+    background-color: var(--textColor);
+    color: var(--secColor);
+}
+
+.input::placeholder {
+    font-size: var(--largeText);
+}
+
+.input:focus {
+    background-color: var(--priColor);
+    color: var(--secColor);
+    font-weight: bold;
+}
+
+.inputSelect {
+    outline: none;
+    border: none;
+    padding: 0.5rem;
+    font-size: var(--largeText);
+    /* background-color: var(--textColor); */
+    color: var(--secColor);
+    width: 20%;
+}
+
+.inputSelect option {
+    background-color: var(--secColor);
+    color: var(--priColor);
+}
+
+/* Utility classes */
+.hidden {
+    display: none !important;
+}
+.success-message {
+    color: #4CAF50;
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+}
+.preview-image {
+    display: block;
+    max-width: 150px;
+    width: 100%;
+    height: auto;
+    margin-top: 0.5rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    main {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    main form .data {
+        width: 95%;
+        padding: 0.7rem;
+    }
+    .inputSelect {
+        width: 40%;
+    }
+}
+
+@media (max-width: 600px) {
+    main {
+        padding: 0.5rem;
+    }
+    main form {
+        padding: 0.5rem;
+    }
+    main form .data {
+        width: 100%;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+    }
+    .input, .inputSelect {
+        font-size: 1rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .inputSelect {
+        min-width: 100px;
+        width: 100%;
+    }
+    main form .submitButton {
+        width: 100%;
+        font-size: 1rem;
+        padding: 0.7rem;
+    }
+}

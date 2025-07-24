@@ -1,0 +1,30 @@
+:root {
+    --priColor: #f2f87f;
+    --secColor: #293333;
+    --textColor: #fff;
+    --boldText: 700;
+    --largeText: 1rem;
+}
+
+ 
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "Josefin Sans", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    color: var(--textColor);
+    text-decoration: none;
+}
+
+body {
+    background-color: var(--secColor);
+}
+
+.line {
+    border: 2px solid var(--priColor);
+    border-radius: 5px;
+}
+
+
