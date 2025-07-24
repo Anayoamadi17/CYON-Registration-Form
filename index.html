@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles/general-styles.css">
+        <link rel="stylesheet" href="styles/header-styles.css">
+        <link rel="stylesheet" href="styles/main-styles.css">
+        <!-- favicon -->
+        <link rel="apple-touch-icon" sizes="180x180" href="media/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="media/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="media/favicon-16x16.png">
+        <link rel="manifest" href="media/site.webmanifest">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <!-- fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=League+Spartan:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <!-- title -->
+        <title>CYON Computer Appreciation Training</title>
+        <meta name="description" content="Join the CYON Computer Appreciation program and enhance your digital literacy skills.">
+        <!-- jsonLD -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "Event",
+                "name": "CYON Computer Appreciation Training",
+                "description": "Join the CYON Computer Appreciation program and enhance your digital literacy skills.",
+                "startDate": "2025-03-01T10:00:00",
+                "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+                "eventStatus": "https://schema.org/EventScheduled",
+                "location": {
+                    "@type": "Place",
+                    "name": "CYON Learning Center",
+                    "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Ungwan Sunday, Kaduna",
+                    "addressLocality": "Kaduna",
+                    "addressRegion": "Kaduna",
+                    "postalCode": "800283",
+                    "addressCountry": "NG"
+                    }
+                },
+                "organizer": {
+                    "@type": "Organization",
+                    "name": "CYON Tech Academy",
+                    <!-- "url": "https://example.com" -->
+                }
+            }
+        </script>
+    </head>
+    <body>
+
+        <section id="header" class="zoom">
+            <div>
+                <img src="media/CYON Logo.jpg" alt="cyon Logo">
+                <h1>CYON St Charles Computers</h1>
+                <h2>St Charles Lwanga Catholic Church, Ungwan Sunday, Kaduna</h2>
+                <button><a href="#main">Addmission form</a></button>
+            </div>
+        </section>
+
+        <main class="zoom">
+            <form action="#">
+                <div id="bioData" class="data">
+                    <h3>Bio-Data</h3> 
+                    
+                    <hr class="line"> 
+                    
+                    <label for="fname">First name</label>
+                    <input type="text" name="fname" id="fname" placeholder="first name" class="input" required>
+                    
+                    <label for="sname">Surname</label>
+                    <input type="text" name="sname" id="sname" placeholder="surname"  class="input"  required>
+                    
+                    <label for="oname">Other names <em>*optional</em></label>
+                    <input type="text" name="oname" id="oname"  class="input" placeholder="other name">
+    
+                    <label for="gsm" class="control-label">Phone Number</label>
+                    <input type="tel" name="gsm" id="gsm" class="input" placeholder="Phone number"> 
+    
+                    <label for="email" class="control-label">Email</label>
+                    <input type="email" name="email" id="email" class="input" placeholder="email"> 
+                    
+                    <div class="form-group">
+                        <label class="control-label">State of Origin</label>
+                        <select onchange="toggleLGA(this);" name="state" id="state"  class="inputSelect" required>
+                            <option value="" selected="selected">- Select -</option>
+                            <option value="Abia">Abia</option>
+                            <option value="Adamawa">Adamawa</option>
+                            <option value="AkwaIbom">AkwaIbom</option>
+                            <option value="Anambra">Anambra</option>
+                            <option value="Bauchi">Bauchi</option>
+                            <option value="Bayelsa">Bayelsa</option>
+                            <option value="Benue">Benue</option>
+                            <option value="Borno">Borno</option>
+                            <option value="Cross River">Cross River</option>
+                            <option value="Delta">Delta</option>
+                            <option value="Ebonyi">Ebonyi</option>
+                            <option value="Edo">Edo</option>
+                            <option value="Ekiti">Ekiti</option>
+                            <option value="Enugu">Enugu</option>
+                            <option value="FCT">FCT</option>
+                            <option value="Gombe">Gombe</option>
+                            <option value="Imo">Imo</option>
+                            <option value="Jigawa">Jigawa</option>
+                            <option value="Kaduna">Kaduna</option>
+                            <option value="Kano">Kano</option>
+                            <option value="Katsina">Katsina</option>
+                            <option value="Kebbi">Kebbi</option>
+                            <option value="Kogi">Kogi</option>
+                            <option value="Kwara">Kwara</option>
+                            <option value="Lagos">Lagos</option>
+                            <option value="Nasarawa">Nasarawa</option>
+                            <option value="Niger">Niger</option>
+                            <option value="Ogun">Ogun</option>
+                            <option value="Ondo">Ondo</option>
+                            <option value="Osun">Osun</option>
+                            <option value="Oyo">Oyo</option>
+                            <option value="Plateau">Plateau</option>
+                            <option value="Rivers">Rivers</option>
+                            <option value="Sokoto">Sokoto</option>
+                            <option value="Taraba">Taraba</option>
+                            <option value="Yobe">Yobe</option>
+                            <option value="Zamfara">Zamafara</option>
+                        </select>
+                    </div>
+    
+                    <div class="form-group">
+                        <label class="control-label">LGA of Origin</label>
+                        <select name="lga" id="lga" class="inputSelect" required>
+                        </select>
+                    </div>        
+    
+                    <div id="gender">
+                        <label for="gender"  class="control-label">Gender</label>
+                        <select name="gender" id="gender-id"  class="inputSelect">
+                            <option value="" selected="selected">-Select-</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>     
+                </div>
+                
+                <div id="courses" class="data">
+                    <h3>Courses</h3> 
+                    <hr class="line">
+                    <label for="courses"  class="control-label">Choose course of study</label>
+                    <select name="courses" id="gender-id"  class="input">
+                        <option value="" selected="selected">-Select-</option>
+                        <option value="2-months Computer Appreciation Courses">2-months Computer Appreciation Courses</option>
+                        <option value="4-months Computer Appreciation Courses">4-months Computer Appreciation Courses</option>
+                    </select>
+                    <div id="fee"></div>
+                    <label for="startDate" class="control-label">Choose start date</label>
+                    <input type="date" name="startDate" id="startDate" class="input" placeholder="choose start date" required>
+                    <label for="endDate" class="control-label">Choose your end date</label>
+                    <input type="date" name="endDate" id="endDate" class="input" placeholder="choose end date" required>
+
+                    <div id="select-days">
+                        <h3>Choose any three days of the week for your classes by checking the box</h3>
+                        <label><input type="checkbox" name="days[]" value="Monday"> Monday</label>
+                        <label><input type="checkbox" name="days[]" value="Tuesday"> Tuesday</label>
+                        <label><input type="checkbox" name="days[]" value="Wednesday"> Wednesday</label>
+                        <label><input type="checkbox" name="days[]" value="Thursday"> Thursday</label>
+                        <label><input type="checkbox" name="days[]" value="Friday"> Friday</label>
+                        <label><input type="checkbox" name="days[]" value="Saturday"> Saturday</label>
+                        <label><input type="checkbox" name="days[]" value="Sunday"> Sunday</label>
+                    </div>
+                </div>
+
+                <div id="quarrantor" class="data">   
+                    <h3>Guarrantor/Gaurdian Information</h3> 
+                    <hr class="line">            
+                    <label for="guarantor">Guarrantor</label>
+                    <input type="text" placeholder="full name"  class="input" required>
+                    
+                    <label for="guarantorAddress">Address</label>
+                    <input type="text" placeholder="Address" class="input" required>
+                    
+                    <label for="guarantorOccupation">Occupation</label>
+                    <input type="text" placeholder="Occupation" class="input" required>
+                    
+                    <label for="guarantorPhone">Phone Number</label>
+                    <input type="text" placeholder="Phone" class="input" required>
+                    
+                    <label for="guarantorSign">Upload Signature</label>
+                    <input type="file" id="guarantorSign" placeholder="" required accept="image/*">
+                    <div id="signature-preview-container">
+                        <img id="signature-preview" src="" alt="Signature Preview" class="preview-image hidden" />
+                        <div id="signature-success" class="success-message hidden">Signature Uploaded successful</div>
+                    </div>
+                </div>
+
+                <div class="data">                    
+                    <p>
+                        I truly declare that the particulars provided by me is accurate. <br><br>
+                        I accept to pay a fee equal to 50% of the registration fee paid for the course i registered, 
+                        if i am unable to finish this course in 3 month (2 months course) or 5 months (for 4 months course) time.
+                        Note: Certificate shall only be issued after completion and submission of the project. <br><br>
+                        I agree to the terms and conditions <input type="checkbox" name="" id=""><br><br>
+                        By ticking this box i declare that i shall complete the course within the stated period. <input type="checkbox" name="" id="">
+                    </p>
+                </div>
+                
+                <div id="photo" class="data">
+                    <label for="pasport">Upload passport</label>
+                    <input type="file" name="passport" id="passport" placeholder="" accept="image/*">
+                    <div id="passport-preview-container">
+                        <img id="passport-preview" src="" alt="Passport Preview" class="preview-image hidden" />
+                        <div id="passport-success" class="success-message hidden">Passport Uploaded successful</div>
+                    </div>
+                </div>
+
+                <input type="submit" value="Submit" class="submitButton"> 
+
+            </form>
+        </main>
+        <script src="js/lga.min.js"></script>
+        <script>
+        // Signature preview and success
+        const signatureInput = document.getElementById('guarantorSign');
+        const signaturePreview = document.getElementById('signature-preview');
+        const signatureSuccess = document.getElementById('signature-success');
+        signatureInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    signaturePreview.src = e.target.result;
+                    signaturePreview.classList.remove('hidden');
+                    signatureSuccess.classList.remove('hidden');
+                };
+                reader.readAsDataURL(file);
+            } else {
+                signaturePreview.classList.add('hidden');
+                signatureSuccess.classList.add('hidden');
+            }
+        });
+        // Passport preview and success
+        const passportInput = document.getElementById('passport');
+        const passportPreview = document.getElementById('passport-preview');
+        const passportSuccess = document.getElementById('passport-success');
+        passportInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    passportPreview.src = e.target.result;
+                    passportPreview.classList.remove('hidden');
+                    passportSuccess.classList.remove('hidden');
+                };
+                reader.readAsDataURL(file);
+            } else {
+                passportPreview.classList.add('hidden');
+                passportSuccess.classList.add('hidden');
+            }
+        });
+        </script>
+    </body>
+</html>
