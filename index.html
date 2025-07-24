@@ -289,20 +289,22 @@
             });
         });
 
-        // Show class info modal when user interacts with class days for the first time
+        // Show class info modal after three days have been selected
         let classInfoShown = false;
         const classInfoModal = document.getElementById('class-info-modal');
         const closeClassInfoModal = document.getElementById('close-class-info-modal');
-        function showClassInfoModal() {
-            if (!classInfoShown) {
-                classInfoModal.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-                classInfoShown = true;
-            }
-        }
         dayCheckboxes.forEach(cb => {
-            cb.addEventListener('focus', showClassInfoModal, { once: true });
-            cb.addEventListener('click', showClassInfoModal, { once: true });
+            cb.addEventListener('change', function() {
+                const checked = document.querySelectorAll('.select-class-days input[type="checkbox"]:checked');
+                if (checked.length > 3) {
+                    this.checked = false;
+                    alert('Please select only three days for your class.');
+                } else if (checked.length === 3 && !classInfoShown) {
+                    classInfoModal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                    classInfoShown = true;
+                }
+            });
         });
         closeClassInfoModal.addEventListener('click', function() {
             classInfoModal.style.display = 'none';
