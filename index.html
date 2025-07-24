@@ -156,7 +156,7 @@
                     <label for="endDate" class="control-label">Choose your end date</label>
                     <input type="date" name="endDate" id="endDate" class="input" placeholder="choose end date" required>
 
-                    <div id="select-days">
+                    <div id="select-days" class="select-class-days">
                         <h3>Choose any three days of the week for your classes by checking the box</h3>
                         <label><input type="checkbox" name="days[]" value="Monday"> Monday</label>
                         <label><input type="checkbox" name="days[]" value="Tuesday"> Tuesday</label>
@@ -184,7 +184,7 @@
                     <input type="text" placeholder="Phone" class="input" required>
                     
                     <label for="guarantorSign">Upload Signature</label>
-                    <input type="file" id="guarantorSign" placeholder="" required accept="image/*">
+                    <input type="file" id="guarantorSign" placeholder="" required accept="image/png, image/jpeg">
                     <div id="signature-preview-container">
                         <img id="signature-preview" src="" alt="Signature Preview" class="preview-image hidden" />
                         <div id="signature-success" class="success-message hidden">Signature Uploaded successful</div>
@@ -204,7 +204,7 @@
                 
                 <div id="photo" class="data">
                     <label for="pasport">Upload passport</label>
-                    <input type="file" name="passport" id="passport" placeholder="" accept="image/*">
+                    <input type="file" name="passport" id="passport" placeholder="" accept="image/png, image/jpeg">
                     <div id="passport-preview-container">
                         <img id="passport-preview" src="" alt="Passport Preview" class="preview-image hidden" />
                         <div id="passport-success" class="success-message hidden">Passport Uploaded successful</div>
@@ -215,6 +215,13 @@
 
             </form>
         </main>
+        <!-- Modal Popup for Class Session Info -->
+        <div id="class-info-modal">
+          <div class="modal-box">
+            <p class="modal-text">Each class session is 3 hours long. <br><br> Kindly visit the business centre to discuss a suitable time with tutor after submitting the application</p>
+            <button id="close-class-info-modal" class="modal-btn">Continue</button>
+          </div>
+        </div>
         <script src="js/lga.min.js"></script>
         <script>
         // Signature preview and success
@@ -223,6 +230,13 @@
         const signatureSuccess = document.getElementById('signature-success');
         signatureInput.addEventListener('change', function(event) {
             const file = event.target.files[0];
+            if (file && !['image/jpeg', 'image/png'].includes(file.type)) {
+                alert('Kindly select .jpg or .png files');
+                signatureInput.value = '';
+                signaturePreview.classList.add('hidden');
+                signatureSuccess.classList.add('hidden');
+                return;
+            }
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
@@ -242,6 +256,13 @@
         const passportSuccess = document.getElementById('passport-success');
         passportInput.addEventListener('change', function(event) {
             const file = event.target.files[0];
+            if (file && !['image/jpeg', 'image/png'].includes(file.type)) {
+                alert('Kindly select .jpg or .png files');
+                passportInput.value = '';
+                passportPreview.classList.add('hidden');
+                passportSuccess.classList.add('hidden');
+                return;
+            }
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
@@ -254,6 +275,38 @@
                 passportPreview.classList.add('hidden');
                 passportSuccess.classList.add('hidden');
             }
+        });
+
+        // Limit class day selection to three checkboxes
+        const dayCheckboxes = document.querySelectorAll('.select-class-days input[type="checkbox"]');
+        dayCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const checked = document.querySelectorAll('.select-class-days input[type="checkbox"]:checked');
+                if (checked.length > 3) {
+                    this.checked = false;
+                    alert('Please select only three days for your class.');
+                }
+            });
+        });
+
+        // Show class info modal when user interacts with class days for the first time
+        let classInfoShown = false;
+        const classInfoModal = document.getElementById('class-info-modal');
+        const closeClassInfoModal = document.getElementById('close-class-info-modal');
+        function showClassInfoModal() {
+            if (!classInfoShown) {
+                classInfoModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+                classInfoShown = true;
+            }
+        }
+        dayCheckboxes.forEach(cb => {
+            cb.addEventListener('focus', showClassInfoModal, { once: true });
+            cb.addEventListener('click', showClassInfoModal, { once: true });
+        });
+        closeClassInfoModal.addEventListener('click', function() {
+            classInfoModal.style.display = 'none';
+            document.body.style.overflow = '';
         });
         </script>
     </body>

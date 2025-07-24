@@ -78,6 +78,25 @@ main h3 {
     color: var(--priColor);
 }
 
+.select-class-days {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+input[type="checkbox"]
+ {
+    accent-color: var(--priColor);
+}
+
+input[type='file'] {
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: var(--priColor);
+    color: var(--secColor);
+}
+
 /* Utility classes */
 .hidden {
     display: none !important;
@@ -95,6 +114,42 @@ main h3 {
     margin-top: 0.5rem;
     border-radius: 4px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+#class-info-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+#class-info-modal .modal-box {
+    background: var(--secColor);
+    color: var(--secColor);
+    max-width: 90vw;
+    width: 400px;
+    padding: 2rem 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+    text-align: center;
+}
+#class-info-modal .modal-text {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+#class-info-modal .modal-btn {
+    background: var(--priColor);
+    color: var(--secColor);
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
 }
 
 /* Responsive Design */
