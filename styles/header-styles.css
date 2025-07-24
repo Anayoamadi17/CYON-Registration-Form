@@ -43,6 +43,30 @@
     font-size: var(--largeText);
 }
 
+#header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+    text-align: center;
+}
+#header h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    #header h1 {
+        font-size: 1.3rem;
+        margin-bottom: 0.3rem;
+    }
+    #header h2 {
+        font-size: 0.95rem;
+        margin-bottom: 0.3rem;
+    }
+}
+
 .zoom {
     margin: auto;
     max-width: 1440px;
