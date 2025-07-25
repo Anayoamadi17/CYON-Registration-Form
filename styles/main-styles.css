@@ -73,7 +73,7 @@ main h3 {
     width: 20%;
 }
 
-.inputSelect option {
+select option {
     background-color: var(--secColor);
     color: var(--priColor);
 }
@@ -192,5 +192,8 @@ input[type='file'] {
         width: 100%;
         font-size: 1rem;
         padding: 0.7rem;
+    }
+    .select-class-days input[type="checkbox"] {
+        accent-color: #000;
     }
 }
