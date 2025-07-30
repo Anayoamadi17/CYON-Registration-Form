@@ -72,6 +72,18 @@ closeClassInfoModal.addEventListener('click', function() {
     classInfoModal.style.display = 'none';
     document.body.style.overflow = '';
 });
+// Auto-set end date based on course duration
+function addMonthsToDate(dateStr, months) {
+  const date = new Date(dateStr);
+  if (isNaN(date)) return '';
+  date.setMonth(date.getMonth() + months);
+  // Adjust for month overflow (e.g., Jan 31 + 1 month = Mar 3)
+  if (date.getDate() !== new Date(dateStr).getDate()) {
+    date.setDate(0); // Go to last day of previous month
+  }
+  return date.toISOString().split('T')[0];
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   const form = document.querySelector('form');
   const successModal = document.getElementById('form-success-modal');
@@ -100,7 +112,31 @@ document.addEventListener('DOMContentLoaded', function() {
       passportInput.value = "";
     });
   }
-}); 
+  const courseSelect = document.querySelector('select[name="courses"]');
+  const startDateInput = document.getElementById('startDate');
+  const endDateInput = document.getElementById('endDate');
+
+  function updateEndDate() {
+    const course = courseSelect ? courseSelect.value : '';
+    const startDate = startDateInput ? startDateInput.value : '';
+    if (!course || !startDate) return;
+    let months = 0;
+    if (course.includes('2-months')) months = 2;
+    if (course.includes('4-months')) months = 4;
+    if (months > 0) {
+      endDateInput.value = addMonthsToDate(startDate, months);
+      endDateInput.readOnly = true;
+    } else {
+      endDateInput.value = '';
+      endDateInput.readOnly = false;
+    }
+  }
+
+  if (courseSelect && startDateInput && endDateInput) {
+    courseSelect.addEventListener('change', updateEndDate);
+    startDateInput.addEventListener('change', updateEndDate);
+  }
+});
 
 const emailInput = document.getElementById('email');
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;

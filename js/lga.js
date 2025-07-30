@@ -9,7 +9,7 @@
     for (var key in attrs) {
       el.setAttribute(key, attrs[key]);
     }
-  };
+  }; 
 
   const toggleLGA = target => { 
     let state = target.value,                                        // Get value of state

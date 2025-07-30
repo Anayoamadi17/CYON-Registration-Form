@@ -207,7 +207,15 @@ input[type='file'] {
         font-size: 1rem;
         padding: 0.7rem;
     }
-    .select-class-days input[type="checkbox"] {
+    
+    input[type="checkbox"] {
         accent-color: #000;
+        width: 1.2em;
+        height: 1.2em;
+        vertical-align: middle;
+        margin-right: 0.5em;
+        cursor: pointer; /* Makes checkbox clickable with hand cursor */
+        border: 1px solid var(--priColor);
+        border-radius: 3px;
     }
 }
