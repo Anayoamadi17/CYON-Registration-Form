@@ -32,7 +32,8 @@
 #header button {
     background-color:  var(--priColor);
     padding: 10px 20px;
-    cursor: pointer;
+    cursor: not-allowed;
+    pointer-events: none;
     border: none;
     margin-top: 2rem;
 }

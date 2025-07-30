@@ -37,6 +37,7 @@ main form .submitButton {
     padding: 10px 20px;
     cursor: pointer;
     border: none;
+    border-radius: 5px;
     margin-top: 2rem;
 }
 
@@ -128,7 +129,7 @@ input[type='file'] {
     justify-content: center;
     align-items: center;
 }
-#class-info-modal .modal-box {
+#class-info-modal .modal-box, #form-success-modal .modal-box {
     background: var(--secColor);
     color: var(--secColor);
     max-width: 90vw;
@@ -138,11 +139,11 @@ input[type='file'] {
     box-shadow: 0 4px 24px rgba(0,0,0,0.15);
     text-align: center;
 }
-#class-info-modal .modal-text {
+#class-info-modal .modal-text, #form-success-modal .modal-text {
     margin-bottom: 2rem;
     font-size: 1.1rem;
 }
-#class-info-modal .modal-btn {
+#class-info-modal .modal-btn, #form-success-modal .modal-btn {
     background: var(--priColor);
     color: var(--secColor);
     border: none;
@@ -150,6 +151,19 @@ input[type='file'] {
     border-radius: 5px;
     font-size: 1rem;
     cursor: pointer;
+}
+
+#form-success-modal.hidden {
+  display: none;
+}
+#form-success-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Responsive Design */

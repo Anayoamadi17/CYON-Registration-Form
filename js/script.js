@@ -71,4 +71,46 @@ dayCheckboxes.forEach(cb => {
 closeClassInfoModal.addEventListener('click', function() {
     classInfoModal.style.display = 'none';
     document.body.style.overflow = '';
+});
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.querySelector('form');
+  const successModal = document.getElementById('form-success-modal');
+  const closeSuccessBtn = document.getElementById('close-success-modal');
+
+  if (form && successModal && closeSuccessBtn) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent actual form submission
+      successModal.classList.remove('hidden');
+    });
+
+    closeSuccessBtn.addEventListener('click', function() {
+      successModal.classList.add('hidden');
+      form.reset();
+
+      // Clear signature preview and success
+      signaturePreview.src = "";
+      signaturePreview.classList.add('hidden');
+      signatureSuccess.classList.add('hidden');
+      signatureInput.value = "";
+
+      // Clear passport preview and success
+      passportPreview.src = "";
+      passportPreview.classList.add('hidden');
+      passportSuccess.classList.add('hidden');
+      passportInput.value = "";
+    });
+  }
 }); 
+
+const emailInput = document.getElementById('email');
+const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+emailInput.addEventListener('blur', () => {
+  if (!emailRegex.test(emailInput.value)) {
+    emailInput.setCustomValidity('Please enter a valid email address');
+    alert('Please enter a valid email address');
+    emailInput.value = '';
+  } else {
+    emailInput.setCustomValidity('');
+  }
+});
