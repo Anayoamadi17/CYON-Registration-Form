@@ -151,9 +151,9 @@
                         <option value="4-months Computer Appreciation Courses">4-months Computer Appreciation Courses</option>
                     </select>
                     <div id="fee"></div>
-                    <label for="startDate" class="control-label">Choose start date <span style="font-size:0.9em;color:#888;">(dd/mm/yyyy)</span></label>
+                    <label for="startDate" class="control-label">Choose start date <span class="subtle-tag">(dd/mm/yyyy)</span></label>
                     <input type="date" name="startDate" id="startDate" class="input" required>
-                    <label for="endDate" class="control-label">Choose your end date <span style="font-size:0.9em;color:#888;">(dd/mm/yyyy)</span></label>
+                    <label for="endDate" class="control-label">Choose your end date <span class="subtle-tag">(dd/mm/yyyy)</span></label>
                     <input type="date" name="endDate" id="endDate" class="input" required>
 
                     <div id="select-days" class="select-class-days">
@@ -183,7 +183,7 @@
                     <label for="gsm">Phone Number</label>
                     <input type="tel" name="gsm" id="gsm" class="input" placeholder="Phone number" pattern="[0-9]{11}" inputmode="numeric" maxlength="11" title="Please enter an 11-digit phone number" onkeypress="return event.charCode >= 48 && event.charCode <= 57"required> 
                     
-                    <label for="guarantorSign">Upload Signature</label>
+                    <label for="guarantorSign">Upload Signature <span class="subtle-tag">*not more than 1MB*</span></label>
                     <input type="file" id="guarantorSign" placeholder="" required accept="image/png, image/jpeg">
                     <div id="signature-preview-container">
                         <img id="signature-preview" src="" alt="Signature Preview" class="preview-image hidden" />
@@ -200,18 +200,18 @@
                         <strong>Note:</strong> A certificate will only be issued upon successful completion and submission of the final project.<br><br>
                     
                         <label>
-                            <input type="checkbox" class="checkbox"> I agree to the terms and conditions.
+                            <input type="checkbox" class="checkbox checkbox-js"> I agree to the terms and conditions.
                         </label><br><br>
                     
                         <label>
-                            <input type="checkbox" class="checkbox"> I commit to completing the course within the stated timeframe.
+                            <input type="checkbox" class="checkbox checkbox-js"> I commit to completing the course within the stated timeframe.
                         </label>
                     </p>
                     
                 </div>
                 
                 <div id="photo" class="data">
-                    <label for="pasport">Upload passport</label>
+                    <label for="pasport">Upload passport <span class="subtle-tag">*not more than 1MB*</span></label>
                     <input type="file" name="passport" id="passport" placeholder="" accept="image/png, image/jpeg">
                     <div id="passport-preview-container">
                         <img id="passport-preview" src="" alt="Passport Preview" class="preview-image hidden" />
@@ -236,6 +236,13 @@
           <div class="modal-box">
             <p class="modal-text">Form submitted successfully!</p>
             <button id="close-success-modal" class="modal-btn">OK</button>
+          </div>
+        </div>
+        <!-- Modal Popup for Form Submission Error -->
+        <div id="form-error-modal" class="hidden">
+          <div class="modal-box">
+            <p class="modal-text" id="form-error-message">You must agree to the terms and conditions and commit to completing the course before submitting.</p>
+            <button id="close-error-modal" class="modal-btn">OK</button>
           </div>
         </div>
         <script src="js/lga.min.js"></script>

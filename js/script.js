@@ -4,12 +4,21 @@ const signaturePreview = document.getElementById('signature-preview');
 const signatureSuccess = document.getElementById('signature-success');
 signatureInput.addEventListener('change', function(event) {
     const file = event.target.files[0];
-    if (file && !['image/jpeg', 'image/png'].includes(file.type)) {
-        alert('Kindly select .jpg or .png files');
+    if (file) {
+      if (file.size > 1024 * 1024) { // 1MB in bytes
+        showErrorModal('Signature file size must not exceed 1MB.');
         signatureInput.value = '';
         signaturePreview.classList.add('hidden');
         signatureSuccess.classList.add('hidden');
         return;
+      }
+      if (!['image/jpeg', 'image/png'].includes(file.type)) {
+        showErrorModal('Kindly select .jpg or .png files');
+        signatureInput.value = '';
+        signaturePreview.classList.add('hidden');
+        signatureSuccess.classList.add('hidden');
+        return;
+      }
     }
     if (file) {
         const reader = new FileReader();
@@ -30,12 +39,21 @@ const passportPreview = document.getElementById('passport-preview');
 const passportSuccess = document.getElementById('passport-success');
 passportInput.addEventListener('change', function(event) {
     const file = event.target.files[0];
-    if (file && !['image/jpeg', 'image/png'].includes(file.type)) {
-        alert('Kindly select .jpg or .png files');
+    if (file) {
+      if (file.size > 1024 * 1024) { // 1MB in bytes
+        showErrorModal('Passport file size must not exceed 1MB.');
         passportInput.value = '';
         passportPreview.classList.add('hidden');
         passportSuccess.classList.add('hidden');
         return;
+      }
+      if (!['image/jpeg', 'image/png'].includes(file.type)) {
+        showErrorModal('Kindly select .jpg or .png files');
+        passportInput.value = '';
+        passportPreview.classList.add('hidden');
+        passportSuccess.classList.add('hidden');
+        return;
+      }
     }
     if (file) {
         const reader = new FileReader();
@@ -60,7 +78,7 @@ dayCheckboxes.forEach(cb => {
         const checked = document.querySelectorAll('.select-class-days input[type="checkbox"]:checked');
         if (checked.length > 3) {
             this.checked = false;
-            alert('Please select only three days for your class.');
+            showErrorModal('Please select only three days for your class.');
         } else if (checked.length === 3 && !classInfoShown) {
             classInfoModal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
@@ -91,9 +109,31 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (form && successModal && closeSuccessBtn) {
     form.addEventListener('submit', function(e) {
+      // Validate all .checkbox-js checkboxes are checked
+      const requiredCheckboxes = document.querySelectorAll('.checkbox-js');
+      const allChecked = Array.from(requiredCheckboxes).every(cb => cb.checked);
+      if (!allChecked) {
+        // Show error modal instead of alert
+        showErrorModal('You must agree to the terms and conditions and commit to completing the course before submitting.');
+        e.preventDefault();
+        return;
+      }
       e.preventDefault(); // Prevent actual form submission
       successModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
     });
+
+    // Close error modal logic
+    const closeErrorBtn = document.getElementById('close-error-modal');
+    if (closeErrorBtn) {
+      closeErrorBtn.addEventListener('click', function() {
+        const errorModal = document.getElementById('form-error-modal');
+        if (errorModal) {
+          errorModal.classList.add('hidden');
+          document.body.style.overflow = '';
+        }
+      });
+    }
 
     closeSuccessBtn.addEventListener('click', function() {
       successModal.classList.add('hidden');
@@ -144,9 +184,20 @@ const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 emailInput.addEventListener('blur', () => {
   if (!emailRegex.test(emailInput.value)) {
     emailInput.setCustomValidity('Please enter a valid email address');
-    alert('Please enter a valid email address');
+    showErrorModal('Please enter a valid email address');
     emailInput.value = '';
   } else {
     emailInput.setCustomValidity('');
   }
 });
+
+// Utility function to show error modal with a custom message
+function showErrorModal(message) {
+  const errorModal = document.getElementById('form-error-modal');
+  const errorMessage = document.getElementById('form-error-message');
+  if (errorModal && errorMessage) {
+    errorMessage.textContent = message;
+    errorModal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+}

@@ -129,7 +129,9 @@ input[type='file'] {
     justify-content: center;
     align-items: center;
 }
-#class-info-modal .modal-box, #form-success-modal .modal-box {
+#class-info-modal .modal-box, 
+#form-success-modal .modal-box, 
+#form-error-modal .modal-box  {
     background: var(--secColor);
     color: var(--secColor);
     max-width: 90vw;
@@ -139,11 +141,15 @@ input[type='file'] {
     box-shadow: 0 4px 24px rgba(0,0,0,0.15);
     text-align: center;
 }
-#class-info-modal .modal-text, #form-success-modal .modal-text {
+#class-info-modal .modal-text, 
+#form-success-modal .modal-text,
+#form-error-modal .modal-text{
     margin-bottom: 2rem;
     font-size: 1.1rem;
 }
-#class-info-modal .modal-btn, #form-success-modal .modal-btn {
+#class-info-modal .modal-btn, 
+#form-success-modal .modal-btn,
+#form-error-modal .modal-btn {
     background: var(--priColor);
     color: var(--secColor);
     border: none;
@@ -156,7 +162,8 @@ input[type='file'] {
 #form-success-modal.hidden {
   display: none;
 }
-#form-success-modal {
+#form-success-modal,
+#form-error-modal {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
   background: rgba(0,0,0,0.5);
@@ -164,6 +171,10 @@ input[type='file'] {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.subtle-tag {
+    font-size:0.9em;color:#888;
 }
 
 /* Responsive Design */
